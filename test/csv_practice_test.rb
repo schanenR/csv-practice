@@ -11,10 +11,10 @@ require 'pry'
 require_relative '../lib/csv_practice'
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
-
+# ID,Name,Sex,Age,Height,Weight,Team,NOC,Games,Year,Season,City,Sport,Event,Medal
 REQUIRED_OLYMPIAN_FIELDS = %w[ID Name Height Team Year City Sport Event Medal]
-MEDAL_TOTALS_FILENAME = 'data/medal_totals.csv'
-OLYMPIC_DATA_FILENAME = 'data/athlete_events.csv'
+MEDAL_TOTALS_FILENAME = '../data/medal_totals.csv'
+OLYMPIC_DATA_FILENAME = '../data/athlete_events.csv'
 
 describe "CSV and Enumerables Exercise" do
 
@@ -25,7 +25,6 @@ describe "CSV and Enumerables Exercise" do
 
       # Act
       olympic_athletes = get_all_olympic_athletes(OLYMPIC_DATA_FILENAME)
-
       # Assert:
       # Check that we get back an array
       expect(olympic_athletes).must_be_instance_of Array
@@ -80,7 +79,7 @@ describe "CSV and Enumerables Exercise" do
         'United Arab Emirates' => 1
       }
       data = get_all_olympic_athletes(OLYMPIC_DATA_FILENAME)
-
+      p data
       # Act
       total_medals = total_medals_per_team(data)
 
@@ -92,8 +91,8 @@ describe "CSV and Enumerables Exercise" do
     end
   end
 
-  xdescribe 'get_all_gold_medalists' do
-    
+  describe 'get_all_gold_medalists' do
+
     it 'returns an array of gold medalists' do
       # Arrange
       data = get_all_olympic_athletes(OLYMPIC_DATA_FILENAME)
